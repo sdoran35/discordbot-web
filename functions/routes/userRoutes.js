@@ -1,6 +1,6 @@
 // USER ROUTES TO HANDLE NEW USERS, FETCHING ALL USERS AND/OR CURRENT USER
 
-const database = require('../data/userDB');
+const database = require('../data/authDB');
 
 module.exports = app => {
 	app.get("/user", (req, res) => {

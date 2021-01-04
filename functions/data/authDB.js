@@ -5,7 +5,7 @@ module.exports.findUser = async uid => {
 	try {
 		const user = await admin
 				.firestore()
-				.collection("users")
+				.collection("authUsers")
 				.doc(uid)
 				.get();
 		if (!user.exists) {
@@ -28,7 +28,7 @@ module.exports.getUsers = async () => {
 		const users = [];
 		const data = await admin
 				.firestore()
-				.collection("users")
+				.collection("authUsers")
 				.orderBy("createdAt", "desc")
 				.get();
 		data.forEach(user => {
@@ -48,7 +48,7 @@ module.exports.newUser = async profile => {
 		const userRecord = await admin.auth().createUser(profile);
 		await admin
 				.firestore()
-				.doc(`/users/${profile.uid}`)
+				.doc(`/authUsers/${profile.uid}`)
 				.set(profile);
 		obj = { success: true, user: userRecord };
 	} catch (error) {

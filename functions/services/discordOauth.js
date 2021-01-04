@@ -2,7 +2,7 @@
 const functions = require('firebase-functions');
 const passport = require('passport');
 const DiscordStrategy = require('passport-discord').Strategy;
-const database = require('../data/userDB');
+const database = require('../data/authDB');
 const SCOPES = ["identify", "email", "guilds.join", "guilds"];
 
 passport.serializeUser((user, done) => {

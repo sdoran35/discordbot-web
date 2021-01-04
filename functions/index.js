@@ -41,8 +41,7 @@ app.use(passport.session());
 // MAKES OUR EXPRESS APP USE THE ROUTES DEFINED IN THE BELOW FILES
 require('./routes/authRoutes')(app);
 require('./routes/userRoutes')(app);
-require('./routes/roleRoutes')(app);
-require('./routes/channelRoutes')(app);
+
 
 // INITIALIZE OUR FIREBASE APP
 admin.initializeApp({
@@ -52,6 +51,7 @@ firebase.initializeApp(firebaseConfig);
 
 // EXPORT OUR FIREBASE FUNCTIONS
 exports.api = functions.https.onRequest(app);
+exports.hello = functions.https.onRequest(require('./routes/helloRoutes'));
 
 // // Create and Deploy Your First Cloud Functions
 // // https://firebase.google.com/docs/functions/write-firebase-functions
